@@ -1,0 +1,18 @@
+{
+  "name": "nodejs",
+  "version": "0.0.1",
+  "authors": [
+    "Nikita Tihomirov <nikitati@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.13"
+  }
+}
