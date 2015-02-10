@@ -7,7 +7,7 @@ npm install
 bower install
 ```
 
-# запускаем сервер
+# запускаем сервер 
 ```
 node server.js
 ```
