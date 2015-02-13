@@ -1,0 +1,7 @@
+.item .item__cell{
+  vertical-align: middle;
+}
+
+.item .item__img{
+  max-width: 100px;
+}

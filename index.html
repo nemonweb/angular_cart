@@ -1,34 +1,42 @@
-<html>
+<html lang="ru">
 
 <head>
   <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body ng-app="cartApp">
 
-
-  <table class="table">
+  <table class="table" ng-controller="cartController as cart">
     <caption>В корзине 2 товара на сумму 500 руб.</caption>
     <tbody>
-      <tr>
-        <th>img</th>
-        <td>name</td>
-        <td>inc/dec</td>
-        <td>price</td>
-        <td>remove</td>
-      </tr>
-      <tr>
-        <th>img</th>
-        <td>name</td>
-        <td>inc/dec</td>
-        <td>price</td>
-        <td>remove</td>
+      <tr class="item" ng-repeat="item in cart.items">
+        <td class="item__cell">
+          <img class="item__img" src="{{item.img}}" alt="" />
+        </td>
+        <td class="item__cell" >{{item.name}}</td>
+        <td class="item__cell">
+          <span class="glyphicon glyphicon-plus-sign"></span>
+          <span>{{item.qty}}</span>
+          <span class="glyphicon glyphicon-minus-sign"></span>
+        </td>
+        <td class="item__cell">
+          <span>{{item.price}}</span>
+          <span> руб.</span>
+        </td>
+        <td class="item__cell">
+          <div class="glyphicon glyphicon-remove"></div>
+        </td>
       </tr>
     </tbody>
   </table>
 
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="app/app.js"></script>
 </body>
 
 </html>
