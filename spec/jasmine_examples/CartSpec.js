@@ -1,6 +1,21 @@
 describe("Unit-test: cartController", function(){
   beforeEach(module('cartApp'));
 
+  initialCartData = [
+    {
+      img: 'http://new.apteka5.ru/images/b/eapteka_817_1398373025.jpg',
+      name: 'Найз',
+      qty: '1',
+      price: '250'
+    },
+    {
+      img: 'http://new.apteka5.ru/images/b/eapteka_817_1398373025.jpg',
+      name: 'Найз2',
+      qty: '2',
+      price: '255'
+    }
+  ];
+
   var ctrl, scope;
   // inject the $controller and $rootScope services
   // in the beforeEach block
@@ -12,6 +27,12 @@ describe("Unit-test: cartController", function(){
       $scope: scope
     });
   }));
+
+  //перед каждым тестом инициировать данные
+  beforeEach(function() {
+    ctrl.items = initialCartData;
+  });
+
 
   describe('cart.increment', function(){
 
@@ -48,5 +69,17 @@ describe("Unit-test: cartController", function(){
     });
 
   });
+
+  describe('cart.removeItem', function(){
+
+    it('remove items', function(){
+      var item = ctrl.items[0];
+      ctrl.removeItem(item);
+      var index = ctrl.items.indexOf(item);
+      expect(index).toEqual(-1);
+    });
+    
+  });
+
 
 });

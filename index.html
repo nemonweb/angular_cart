@@ -20,16 +20,16 @@
         </td>
         <td class="item__cell" >{{item.name}}</td>
         <td class="item__cell">
-          <span class="glyphicon glyphicon-plus-sign"></span>
+          <span class="glyphicon glyphicon-plus-sign" ng-click="cart.increment(item)"></span>
           <span>{{item.qty}}</span>
-          <span class="glyphicon glyphicon-minus-sign"></span>
+          <span class="glyphicon glyphicon-minus-sign" ng-click="cart.decrement(item)"></span>
         </td>
         <td class="item__cell">
           <span>{{item.price}}</span>
           <span> руб.</span>
         </td>
         <td class="item__cell">
-          <div class="glyphicon glyphicon-remove"></div>
+          <div class="glyphicon glyphicon-remove" ng-click="cart.removeItem(item)"></div>
         </td>
       </tr>
     </tbody>

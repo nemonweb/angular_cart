@@ -25,6 +25,11 @@ angular.module('cartApp', [])
       item.qty--;
     };
 
+    cart.removeItem = function(item){
+      var index = cart.items.indexOf(item);
+      cart.items.splice(index,1);
+    };
+
 
     cart.items = [
       {
@@ -34,4 +39,5 @@ angular.module('cartApp', [])
         price: '250'
       }
     ];
+    
   });
