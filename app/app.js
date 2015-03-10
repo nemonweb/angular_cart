@@ -1,19 +1,22 @@
-angular.module('cartApp', [])
-  .controller('cartController', function($scope){
+angular.module('cartApp', ['ngResource'])
+  .factory("cartFactory", function($resource) {
+    return $resource("/api/cart/",
+    {'query': { method: 'GET', isArray: false }
+    });
+  })
+  .controller('cartController', function($scope, cartFactory, $http){
     var cart = this;
 
-    //пример
-    cart.password = '';
-    cart.grade = function() {
-      var size = cart.password.length;
-      if (size > 8) {
-        cart.strength = 'strong';
-      } else if (size > 3) {
-        cart.strength = 'medium';
-      } else {
-        cart.strength = 'weak';
-      }
-    };
+    /*
+    cartFactory.query(function(data) {
+      console.log(data);
+    });
+    */
+
+    $http({ method: 'GET', url: '/api/cart/' })
+    .success(function (data, status, headers, config) {
+        cart.items = data.products;
+        });
 
     cart.increment = function(item){
       if(item.qty >= 10) return;
@@ -30,14 +33,4 @@ angular.module('cartApp', [])
       cart.items.splice(index,1);
     };
 
-
-    cart.items = [
-      {
-        img: 'http://new.apteka5.ru/images/b/eapteka_817_1398373025.jpg',
-        name: 'Найз',
-        qty: '1',
-        price: '250'
-      }
-    ];
-    
   });

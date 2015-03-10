@@ -1,5 +1,7 @@
 var express = require('express');
 var app = express();
+
+
 var bodyParser = require('body-parser');
 var faker = require('faker');
 
@@ -15,6 +17,7 @@ router.route('/cart')
       cart_id: 123,
       products: getProducts()
     };
+    console.log("send data");
     res.json(cart);
   });
 
@@ -25,7 +28,8 @@ function getProducts(){
     product = {
       img: faker.image.food(),
       name: faker.name.findName(),
-      price: faker.finance.amount()
+      price: faker.finance.amount(),
+      qty: 1
     };
     products.push(product);
     i++;
@@ -34,5 +38,8 @@ function getProducts(){
 }
 
 app.use('/api', router);
+
+app.use('/', express.static(__dirname));
+
 app.listen(port);
 console.log('magic port ' + port);
