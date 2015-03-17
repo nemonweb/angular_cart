@@ -17,7 +17,6 @@ router.route('/cart')
       cart_id: 123,
       products: getProducts()
     };
-    console.log("send data");
     res.json(cart);
   });
 
