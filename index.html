@@ -9,9 +9,36 @@
   <link href="styles/style.css" rel="stylesheet">
 </head>
 
-<body ng-app="cartApp">
+<body ng-app="cartApp" ng-controller="cartController as cart">
 
-  <table class="table" ng-controller="cartController as cart">
+<style>
+.catalog-product_list-item-btn {
+  display: block;
+  float: right;
+  padding: 8px 0;
+  text-align: center;
+  width: 70px;
+  background: rgb(122,193,67);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font: 14px "Roboto",sans-serif;
+  color: rgb(255,255,255);
+  cursor: pointer;
+  padding: 6px 0;
+width: 70px;
+}
+
+.added_to_cart {
+  background: rgb(154, 154, 154) !important;
+}
+.added_to_cart a {
+  color: #FFF;
+}
+</style>
+
+
+  <table class="table" >
     <caption>В корзине 2 товара на сумму 500 руб.</caption>
     <tbody>
       <tr class="item" ng-repeat="item in cart.items">
@@ -38,8 +65,19 @@
     <span>Оформить</span>
   </div>
 
+<div>
+    <buy-button item-id="124"/>
+</div>
+<div>
+    <buy-button item-id="123"/>
+</div>
+
+
+
+
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+  <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
   <script src="app/app.js"></script>
 </body>
 
